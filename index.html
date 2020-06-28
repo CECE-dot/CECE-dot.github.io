@@ -153,6 +153,16 @@
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-28&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/vue">vue</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A8%A1%E5%9D%97%E5%BC%95%E8%B5%B7%E7%9A%84%E6%8A%A5%E9%94%99">模块引起的报错</a>&nbsp;
+          
         
       </div>
     </div>
@@ -169,14 +179,12 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">
-title: 后台接口统一date: 2020-06-04 21:41:54tags:后台接口
-—我们一般会在前端多个页面向后台数据库发送请求，对数据进行增删改查。在后端数据库中，为了能够对不同页面的数据进行分类，我们会在在后端中创建多个模型。一个模型可能对应多个接口路由，如下图
+          <div class="index-text mb-1">我们一般会在前端多个页面向后台数据库发送请求，对数据进行增删改查。在后端数据库中，为了能够对不同页面的数据进行分类，我们会在在后端中创建多个模型。一个模型可能对应多个接口路由，如下图
 Category模型的路由： 
 Article模型的路由：
 观察这两个模型的路由接口，它们除了模块名，和路由地址不一样以外，其中的代码都是一样的。在数据库中可能还有其他模型也有这些相同功能的路由接口，如果在接口index.js文件中，都对每一个模型写这些除模块名和路由地址以外都相同路由接口代码，那整个index.js文件中的代码多余，自己写起来也会很累，那我们能不能给这些功能相似的路由接口统一呢？当然可以！
 1.我们先解决在后端接收不同路径。我们在后端对应的路由接口路径一个变量resource，接收前端页面不同路由路径。但是我们统一接口的路由，它们的功能都是相同的，所以我们在后端路径中再定义一个常量，方便我们区别其他不同功能的路由路径。再去前端页面，在路由中对应的添加这个常量。
-app.use(&apos;</div>
+app.use(&apos;/admit/api/rest/:resource&apos;，router）2.根据前端页面发送的</div>
         </div>
       </a>
 
@@ -185,6 +193,16 @@ app.use(&apos;</div>
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-04&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%8E%A5%E5%8F%A3">接口</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3">后台接口</a>&nbsp;
+          
         
       </div>
     </div>
@@ -195,14 +213,13 @@ app.use(&apos;</div>
     
     <div class="col-12 col-md-8 m-auto">
       <a href="/2019/11/11/react%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
-        <p class="h4 index-header">react的生命周期</p>
+        <p class="h4 index-header">react中受控组件和非受控组件</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">
-title: react中受控组件和非受控组件date: 2019-11-11 01:10:16tags:—受控组件和非受控组件顾名思义就是：这个组件是不是由自己控制。由自己控制的就是受控组件，自己控制不了的就是非受控组件。但是问题来了，我们到底是控制组件的什么呢？
+          <div class="index-text mb-1">受控组件和非受控组件顾名思义就是：这个组件是不是由自己控制。由自己控制的就是受控组件，自己控制不了的就是非受控组件。但是问题来了，我们到底是控制组件的什么呢？
 —受控组件
 </div>
         </div>
@@ -212,6 +229,11 @@ title: react中受控组件和非受控组件date: 2019-11-11 01:10:16tags:—�
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-11&nbsp;&nbsp;
         
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/react">react</a>&nbsp;
+          &nbsp;
         
         
       </div>
@@ -223,14 +245,13 @@ title: react中受控组件和非受控组件date: 2019-11-11 01:10:16tags:—�
     
     <div class="col-12 col-md-8 m-auto">
       <a href="/2019/11/08/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
-        <p class="h4 index-header">我的博客搭建</p>
+        <p class="h4 index-header">个人博客搭建</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">
-title: 个人博客搭建date: 2019-11-08 13:52:55tags:—搭建hexo博客
+          <div class="index-text mb-1">搭建hexo博客
 —1.下载node.js ：https://nodejs.org/en/ （1）验证node.js  npm下载成功：
 node -v  
 npm -v—2.更换淘宝下载源：
@@ -242,7 +263,7 @@ npm install -g hexo-cli—6验证是否下载成功：
 hexo -v—7.正式搭建hexo博客：
 hexo init  —8.创建自己的hexo博客的第一篇文章：
 hexo  n  &quot;文章名“—9.下载git插件：
-hexo install  </div>
+hexo install  git-deployer --save—10.在弹出的窗口输入自己的GitHub账号和密码</div>
         </div>
       </a>
 
@@ -251,6 +272,16 @@ hexo install  </div>
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-08&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/person">person</a>&nbsp;
+          
         
       </div>
     </div>
