@@ -8,7 +8,7 @@
     <link href="undefined2020/06/28/%E5%9C%A8vue%E4%B8%AD%E5%8F%96%E6%B6%88eslint%E8%A7%84%E8%8C%83/"/>
     <url>2020/06/28/%E5%9C%A8vue%E4%B8%AD%E5%8F%96%E6%B6%88eslint%E8%A7%84%E8%8C%83/</url>
     
-    <content type="html"><![CDATA[<p>在vue项目中安装了eslint模块，在项目中如果定义某一个变量，且没有使用，在终端中就会报错会出现** is defined but never used eslint<br>我们可以在package-json的根目录下，创建一个vue.config.js,在这个js文件中输入如下代码并保存</p><p>module.exports = {<br>    // 禁用eslint-loader<br>    lintOnSave:false<br>}</p>]]></content>
+    <content type="html"><![CDATA[<p>在vue项目中安装了eslint模块，在项目中如果定义某一个变量，且没有使用，在终端中就会报错会出现** is defined but never used eslint<br>以下两种方法可以解决这个问题</p><p>1.我们可以在package-json的根目录下，创建一个vue.config.js,在这个js文件中输入如下代码并保存<br>module.exports = {<br>    // 禁用eslint-loader<br>    lintOnSave:false<br>}</p><p>2.在package.json中找到eslintConfig,在它的下面有一个rules，<br><img src="/2020/06/28/%E5%9C%A8vue%E4%B8%AD%E5%8F%96%E6%B6%88eslint%E8%A7%84%E8%8C%83/setup.png" srcset="undefined" alt="setup"></p>]]></content>
     
     
     
