@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Archive ~ CECE-dot</title>
+  <title>MongoDB中的populate查询方法 ~ CECE-dot</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -36,7 +36,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,6 +107,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Friday, July 3rd 2020, 4:39 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    16 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -117,41 +152,78 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">5 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/06/28/%E5%9C%A8vue%E4%B8%AD%E5%8F%96%E6%B6%88eslint%E8%A7%84%E8%8C%83/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在vue中取消eslint规范</span>
-      <span style="float: right;">06-28</span>
-    </a>
-  
-    
-    <a href="/2020/06/04/%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%E7%BB%9F%E4%B8%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">后台接口统一</span>
-      <span style="float: right;">06-04</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>1.先定义Article模块和Category模块</p>
+<p>Category模块： <img src="/2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/Category.png" srcset="undefined" alt="Category"></p>
+<p>Article模块：  <img src="/2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/Article.png" srcset="undefined" alt="Article"></p>
+<ol start="2">
+<li><p><img src="/2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/result.png" srcset="undefined" alt="result"></p>
+</li>
+<li><p><img src="/2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/result1.png" srcset="undefined" alt="result1"></p>
+</li>
+</ol>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/MongoDB">MongoDB</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2">多表查询</a>
+                
+                  <a class="hover-with-bg" href="/tags/populate">populate</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -216,6 +288,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -256,7 +333,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "MongoDB中的populate查询方法&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
