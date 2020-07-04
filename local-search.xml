@@ -132,8 +132,8 @@
   
   <entry>
     <title>react中受控组件和非受控组件</title>
-    <link href="undefined2019/11/11/react%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
-    <url>2019/11/11/react%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <link href="undefined2019/11/11/react%E7%9A%84%E5%8F%97%E6%8E%A7%E5%92%8C%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6/"/>
+    <url>2019/11/11/react%E7%9A%84%E5%8F%97%E6%8E%A7%E5%92%8C%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6/</url>
     
     <content type="html"><![CDATA[<p>受控组件和非受控组件顾名思义就是：这个组件是不是由自己控制。<br>由自己控制的就是受控组件，自己控制不了的就是非受控组件。但是问题来了，我们到底是控制组件的什么呢？</p><p>1.受控组件：在react中一些表单组件如<input> <textarea> </textarea><select>,在它们的使用过程中，先对他们进行赋值处理。它们的value值是通过React的state控制的，<br>并且在通过onChange事件中的setState进行修改。当要对某个组件需要更改value值时就使用受控组件</select></p><p>2、非受控组件：就是不需要先组件进行赋值，它的值直接关联某个dom元素，它的值会随之dom元素的值变化而变化。不需要修改value值就使用非受控组件。</p><pre><code>&lt;input placeholder=&quot;请先输入&quot; label=&quot;姓名&quot; ref={input=&gt;this.username=input}/&gt;</code></pre>]]></content>
     
@@ -144,6 +144,12 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>组件</tag>
+      
+    </tags>
     
   </entry>
   
