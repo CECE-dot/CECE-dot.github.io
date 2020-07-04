@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>上传图片</title>
+    <link href="undefined2020/07/04/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+    <url>2020/07/04/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</url>
+    
+    <content type="html"><![CDATA[<p>在前端页面向后端上传一张图片，后端接收也需要一个中间件multer,这个中间件会在设置路径之后创建一个文件夹</p><pre><code>const multer=require(&quot;multer&quot;)const upload=multer({dest:_dirname+&quot;/../../upload&quot;})app.post(&quot;admin/api/upload&quot;,upload.single(&apos;file&apos;),async(req,res)=&gt;{    const file=req.file    file.url=`http://localhost:3000/upload/${file.filename}`    res.send(file)})</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>后台</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>图片上传</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>后台向前端页面发送token</title>
+    <link href="undefined2020/07/03/%E5%90%8E%E5%8F%B0%E5%90%91%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%8F%91%E9%80%81token/"/>
+    <url>2020/07/03/%E5%90%8E%E5%8F%B0%E5%90%91%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%8F%91%E9%80%81token/</url>
+    
+    <content type="html"><![CDATA[<p>1.token主要目的：在后台中用户的用户名和密码都验证成功之后，向前端会发送一个token，这个token用于在admin<br>中页面各个接口中安全地获取数据</p><p>2.token的生成步骤：</p><pre><code>const jwt=required(&quot;jsonwbetoken&quot;)const token=jwt.sign({         _id:user.id         name:user.name     },&quot;shdghsagd&quot;)   res.send(token)</code></pre><p>3.在前端页面接收token并且储存在localStorage中</p><pre><code>localStorage.token=res.datathis.router.push(&quot;/)this.$message({    type:&quot;success&quot;    message:&quot;登入成功&quot;})</code></pre><p>4.登入成功之后在admin各个页面的请求接口处，将token返回给后台验证</p><pre><code> axios.interceptors.request,use(function(config){         if(localStorage.token){              config.headers.Authorization=&quot;Bear&quot;+localStorage          }         return config},function(err){})</code></pre><p>5.在后端接口处验证token，在接口处使用一个中间件</p><pre><code>const jwt=required(&quot;jsonwebtoken&quot;)const AdminUser=required(&quot;../model/AdminUser)const assert=required(&quot;http-assert&quot;)async (req,res,next)=&gt;{    const token=String(req.headers.authorization||&apos; &apos;).splice(&quot; &quot;)    assert(token,422,&quot;请重新登入&quot;)    const tokenData=jwt.verify(token,req.app.get(&quot;secret&quot;))    assert(tokenData._id,422,&quot;请重新登入&quot;)    const  user=await AdminUser.findOne(tokenData._id )    assert(user,422,&quot;请重新登入&quot;)    await next()}</code></pre><p>6.在后台对错误进行处理</p><pre><code> app.use(async(err,req,res,next)=&gt;{ res.status(err.statusCode||500).send({       message:err.message })  })    }</code></pre><p>7.前端页面接收返回的错误信息，并跳转到登入页面</p><pre><code>axios.interceptors.response(res={    return res},err=&gt;{    if(err.response.data.message){        Vue.$protoType.message({            type:&quot;error&quot;,            message:err.response.data.message        })    }    if(err.response.data.status){        router.push(&quot;/login)    }    return Promise.reject(err)})         </code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>接口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>token</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MongoDB中的populate查询方法</title>
     <link href="undefined2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/"/>
     <url>2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/</url>

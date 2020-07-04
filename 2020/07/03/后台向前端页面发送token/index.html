@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Archive ~ CECE-dot</title>
+  <title>后台向前端页面发送token ~ CECE-dot</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -36,7 +36,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,6 +107,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Friday, July 3rd 2020, 5:43 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    364 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -117,41 +152,120 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">7 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/06/28/%E5%9C%A8vue%E4%B8%AD%E5%8F%96%E6%B6%88eslint%E8%A7%84%E8%8C%83/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在vue中取消eslint规范</span>
-      <span style="float: right;">06-28</span>
-    </a>
-  
-    
-    <a href="/2020/06/04/%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%E7%BB%9F%E4%B8%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">后台接口统一</span>
-      <span style="float: right;">06-04</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>1.token主要目的：在后台中用户的用户名和密码都验证成功之后，向前端会发送一个token，这个token用于在admin<br>中页面各个接口中安全地获取数据</p>
+<p>2.token的生成步骤：</p>
+<pre><code>const jwt=required(&quot;jsonwbetoken&quot;)
+const token=jwt.sign({
+         _id:user.id
+         name:user.name
+     },&quot;shdghsagd&quot;)
+   res.send(token)</code></pre><p>3.在前端页面接收token并且储存在localStorage中</p>
+<pre><code>localStorage.token=res.data
+this.router.push(&quot;/)
+this.$message({
+    type:&quot;success&quot;
+    message:&quot;登入成功&quot;
+})</code></pre><p>4.登入成功之后在admin各个页面的请求接口处，将token返回给后台验证</p>
+<pre><code> axios.interceptors.request,use(function(config){
+         if(localStorage.token){
+              config.headers.Authorization=&quot;Bear&quot;+localStorage 
+         }
+         return config
+},function(err){
 
-              </div>
-            </div>
+})</code></pre><p>5.在后端接口处验证token，在接口处使用一个中间件</p>
+<pre><code>const jwt=required(&quot;jsonwebtoken&quot;)
+const AdminUser=required(&quot;../model/AdminUser)
+const assert=required(&quot;http-assert&quot;)
+async (req,res,next)=&gt;{
+    const token=String(req.headers.authorization||&apos; &apos;).splice(&quot; &quot;)
+    assert(token,422,&quot;请重新登入&quot;)
+    const tokenData=jwt.verify(token,req.app.get(&quot;secret&quot;))
+    assert(tokenData._id,422,&quot;请重新登入&quot;)
+    const  user=await AdminUser.findOne(tokenData._id )
+    assert(user,422,&quot;请重新登入&quot;)
+    await next()
+}</code></pre><p>6.在后台对错误进行处理</p>
+<pre><code> app.use(async(err,req,res,next)=&gt;{
+ res.status(err.statusCode||500).send({
+       message:err.message
+ })
+  })    
+}</code></pre><p>7.前端页面接收返回的错误信息，并跳转到登入页面</p>
+<pre><code>axios.interceptors.response(res={
+    return res
+},err=&gt;{
+    if(err.response.data.message){
+        Vue.$protoType.message({
+            type:&quot;error&quot;,
+            message:err.response.data.message
+        })
+    }
+    if(err.response.data.status){
+        router.push(&quot;/login)
+    }
+    return Promise.reject(err)
+})         </code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%8E%A5%E5%8F%A3">接口</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/token">token</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -216,6 +330,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -256,7 +375,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "后台向前端页面发送token&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

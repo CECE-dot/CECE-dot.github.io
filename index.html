@@ -134,6 +134,97 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/04/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/">
+        <p class="h4 index-header">上传图片</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">在前端页面向后端上传一张图片，后端接收也需要一个中间件multer,这个中间件会在设置路径之后创建一个文件夹
+const multer=require(&quot;multer&quot;)
+const upload=multer({dest:_dirname+&quot;/../../upload&quot;})
+app.post(&quot;admin/api/upload&quot;,upload.single(&apos;file&apos;),async(req,res)=&gt;{
+    const file=req.file
+    file.url=`http://localhost:3000/upload/${file.filename}`
+    res.send(file)
+})</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%90%8E%E5%8F%B0">后台</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0">图片上传</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/03/%E5%90%8E%E5%8F%B0%E5%90%91%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%8F%91%E9%80%81token/">
+        <p class="h4 index-header">后台向前端页面发送token</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.token主要目的：在后台中用户的用户名和密码都验证成功之后，向前端会发送一个token，这个token用于在admin中页面各个接口中安全地获取数据
+2.token的生成步骤：
+const jwt=required(&quot;jsonwbetoken&quot;)
+const token=jwt.sign({
+         _id:user.id
+         name:user.name
+     },&quot;shdghsagd&quot;)
+   res.send(token)3.在前端页面接收token并且储存在localStorage中
+localStorage.token=res.data
+this.router.push(&quot;/)
+this.$message({
+    type:&quot;success&quot;
+    message:&quot;登入成功&quot;
+})4.登入成功之后在admin各个页面的请求接口处，将token返回给后台验证
+ axios.interceptors.request,use(function(conf</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%8E%A5%E5%8F%A3">接口</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/token">token</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/07/03/MongoDB%E4%B8%AD%E7%9A%84populate%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/">
         <p class="h4 index-header">MongoDB中的populate查询方法</p>
         
